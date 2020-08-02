@@ -1,19 +1,19 @@
 /*************************
 
-京东多合一签到脚本
+ 京东多合一签到脚本
 
-更新时间: 2020.7.29 20:50 v1.34
-有效接口: 24+
-脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
-电报频道: @NobyDa 
-问题反馈: @NobyDa_bot 
-如果转载: 请注明出处
+ 更新时间: 2020.8.1 19:30 v1.35 (Beta)
+ 有效接口: 24+
+ 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
+ 电报频道: @NobyDa
+ 问题反馈: @NobyDa_bot
+ 如果转载: 请注明出处
 
-*************************
-【 JSbox, Node.js 说明 】 :
-*************************
+ *************************
+ 【 JSbox, Node.js 说明 】 :
+ *************************
 
-开启抓包app后, Safari浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后, 返回抓包app搜索关键字 functionId=signBean 复制请求头Cookie填入以下Key处的单引号内即可 */
+ 开启抓包app后, Safari浏览器登录 https://bean.m.jd.com 点击签到并且出现签到日历后, 返回抓包app搜索关键字 functionId=signBean 复制请求头Cookie填入以下Key处的单引号内即可 */
 
 var Key = ''; //单引号内自行填写您抓取的Cookie
 
@@ -31,13 +31,13 @@ var DualKey = ''; //如需双账号签到,此处单引号内填写抓取的"账�
 
 初次使用时, app配置文件添加脚本配置,并启用Mitm后, Safari浏览器打开登录 https://bean.m.jd.com ,点击签到并且出现签到日历后, 如果通知获得cookie成功, 则可以使用此签到脚本。 注: 请勿在京东APP内获取!!!
 
-由于cookie的有效性(经测试网页Cookie有效周期最长31天)，如果脚本后续弹出cookie无效的通知，则需要重复上述步骤。 
+由于cookie的有效性(经测试网页Cookie有效周期最长31天)，如果脚本后续弹出cookie无效的通知，则需要重复上述步骤。
 签到脚本将在每天的凌晨0:05执行, 您可以修改执行时间。 因部分接口京豆限量领取, 建议调整为凌晨签到。
 
 BoxJs订阅地址: https://raw.githubusercontent.com/NobyDa/Script/master/NobyDa_BoxJs.json
 
 *************************
-【 配置双京东账号签到说明 】 : 
+【 配置双京东账号签到说明 】 :
 *************************
 
 正确配置QX、Surge、Loon后, 并使用此脚本获取"账号1"Cookie成功后, 请勿点击退出账号(可能会导致Cookie失效), 需清除浏览器资料或更换浏览器登录"账号2"获取即可.
@@ -78,7 +78,7 @@ hostname = api.m.jd.com
 5 0 * * * JD_DailyBonus.js
 
 [rewrite_local]
-# 获取京东Cookie. 
+# 获取京东Cookie.
 # 注意此为本地路径, 请根据实际情况自行调整.
 https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean url script-request-header JD_DailyBonus.js
 
@@ -98,9 +98,9 @@ var out = 0; //接口超时退出, 用于可能发生的网络不稳定, 0则关
 var $nobyda = nobyda();
 
 async function all() {
+  await JingDongSpeedUp(stop); //京东天天加速
   if (stop == 0) {
     await Promise.all([
-      JingDongSpeedUp(stop), //京东天天加速
       JingDongBean(stop), //京东京豆
       JingRongBean(stop), //金融京豆
       JingRongDoll(stop), //金融抓娃娃
@@ -115,6 +115,7 @@ async function all() {
       JingDongShake(stop) //京东摇一摇
     ]);
     await Promise.all([
+      JDUserSignPre(stop, 'JDDrug', '京东商城-医药'), //京东医药馆
       JDUserSignPre(stop, 'JDVege', '京东商城-菜场'), //京东菜场
       JDUserSignPre(stop, 'JDFood', '京东商城-美食'), //京东美食馆
       JDUserSignPre(stop, 'JDClean', '京东商城-清洁'), //京东清洁馆
@@ -128,12 +129,12 @@ async function all() {
       JDUserSignPre(stop, 'JDMakeup', '京东商城-美妆') //京东美妆馆
     ]);
   } else {
-    await JingDongSpeedUp(stop); //京东天天加速
     await JingDongBean(stop); //京东京豆
     await JingRongBean(stop); //金融京豆
     await JingRongDoll(stop); //金融抓娃娃
     await JingRongSteel(stop); //金融钢镚
     await JingDongTurn(stop); //京东转盘
+    await JDUserSignPre(stop, 'JDDrug', '京东商城-医药'); //京东医药馆
     await JDUserSignPre(stop, 'JDGStore', '京东商城-超市'); //京东超市
     await JDUserSignPre(stop, 'JDPet', '京东商城-宠物'); //京东宠物馆
     await JDFlashSale(stop); //京东闪购
@@ -194,6 +195,7 @@ function notify() {
       var DName = merge.JDShake.nickname ? merge.JDShake.nickname : "获取失败"
       var Name = add ? DualAccount ? "【签到号一】:  " + DName + "\n" : "【签到号二】:  " + DName + "\n" : ""
       console.log("\n" + Name + one + two + three + four + notify)
+      move(0,0,1)
       if ($nobyda.isJSBox) {
         if (add && DualAccount) {
           Shortcut = Name + one + two + three + "\n"
@@ -787,7 +789,7 @@ function JDUserSignPre(s, key, title) {
 
 function JDUserSignPre1(s, key, title) {
   return new Promise((resolve, reject) => {
-    if (disable(key)) return reject()
+    if (disable(key, title, 1)) return reject()
     //setTimeout(() => {
     const JDUrl = {
       url: 'https://api.m.jd.com/?client=wh5&functionId=qryH5BabelFloors',
@@ -809,7 +811,7 @@ function JDUserSignPre1(s, key, title) {
             if (!params) { // 第一处找到签到所需数据
               // floatLayerList未找到签到所需数据，从floorList中查找
               let signInfo = (od.floorList || []).filter(o => o.template == 'signIn' && o.signInfos && o.signInfos.params && o.signInfos.params.match(/enActK/))
-                .map(o => o.signInfos).pop();
+                  .map(o => o.signInfos).pop();
               if (signInfo) {
                 if (signInfo.signStat == '1') {
                   merge[key].notify = `${title}: 失败, 原因: 已签过 ⚠️`
@@ -840,13 +842,16 @@ function JDUserSignPre1(s, key, title) {
     //}, s)
     if (out) setTimeout(reject, out + s)
   }).then(data => {
+    disable(key, title, 2)
     return JDUserSign(s, key, title, encodeURIComponent(JSON.stringify(data)));
-  }, () => {});
+  }).catch(err => {
+    return disable(key, title, 2)
+  })
 }
 
 function JDUserSignPre2(s, key, title) {
   return new Promise((resolve, reject) => {
-    if (disable(key)) return reject()
+    if (disable(key, title, 1)) return reject()
     //setTimeout(() => {
     const JDUrl = {
       url: `https://pro.m.jd.com/mall/active/${acData[key]}/index.html`,
@@ -876,8 +881,11 @@ function JDUserSignPre2(s, key, title) {
     //}, s)
     if (out) setTimeout(reject, out + s)
   }).then(data => {
+    disable(key, title, 2)
     return JDUserSign(s, key, title, encodeURIComponent(data));
-  }, () => {});
+  }).catch(err => {
+    return disable(key, title, 2)
+  })
 }
 
 function JDUserSign(s, key, title, body) {
@@ -1870,9 +1878,53 @@ function TotalCash() {
   });
 }
 
-function disable(name) {
-  const read = $nobyda.read("JD_DailyBonusDisable")
-  if (read === "" || read && read.indexOf(name) == -1) {
+function disable(Val, name, way) {
+  const read = $nobyda.read("JD_DailyBonusDisables")
+  const annal = $nobyda.read("JD_Crash_" + Val)
+  const boxds = $nobyda.read("JD_Crash_disable") === "false" ? false : true
+  const old = (Val == "JDDrug" || way == 2) ? false : move(Val, read, 0)
+  if (annal && way == 1 && boxds) {
+    var Crash = $nobyda.write("", "JD_Crash_" + Val)
+    if (read) {
+      if (read.indexOf(Val) == -1) {
+        var Crash = $nobyda.write(`${read},${Val}`, "JD_DailyBonusDisables")
+        $nobyda.notify("京东签到 ⚠️", "", `检测到上次执行"${name}"意外崩溃\n已为您自动禁用该接口, 如需开启请前往BoxJs`)
+      }
+    } else {
+      var Crash = $nobyda.write(Val, "JD_DailyBonusDisables")
+      $nobyda.notify("京东签到 ⚠️", "", `检测到上次执行"${name}"意外崩溃\n已为您自动禁用该接口, 如需开启请前往BoxJs`)
+    }
+    return true
+  } else if (way == 1 && boxds) {
+    var Crash = $nobyda.write(name, "JD_Crash_" + Val)
+  } else if (way == 2 && annal) {
+    var Crash = $nobyda.write("", "JD_Crash_" + Val)
+  }
+  if (read && read.indexOf(Val) != -1 || old) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function move(ValKey, NewKey, DelOld) {
+  const OldKey = $nobyda.read("JD_DailyBonusDisable")
+  if (DelOld && OldKey) {
+    if (OldKey.split(",").length != 28) {
+      $nobyda.notify("京东签到", "BoxJs禁用迁移成功", "请更新京东BoxJs订阅以适配新版本")
+    }
+    var Crash = $nobyda.write("", "JD_DailyBonusDisable")
+    return true
+  }
+  if (OldKey && OldKey.indexOf(ValKey) == -1) {
+    console.log(`\nBoxJs禁用迁移成功 (${ValKey})`)
+    if (NewKey) {
+      if (NewKey.indexOf(ValKey) == -1) {
+        var Crash = $nobyda.write(`${NewKey},${ValKey}`, "JD_DailyBonusDisables")
+      }
+    } else {
+      var Crash = $nobyda.write(ValKey, "JD_DailyBonusDisables")
+    }
     return true
   } else {
     return false
@@ -1882,6 +1934,8 @@ function disable(name) {
 function initial() {
 
   acData = {
+    // 京东商城-医药
+    JDDrug: '3tqTG5sF1xCUyC6vgEF5CLCxGn7w',
     // 京东商城-超市
     JDGStore: 'aNCM6yrzD6qp1Vvh5YTzeJtk7cM',
     // 京东商城-宠物
@@ -1914,6 +1968,7 @@ function initial() {
     JRDSign: {},
     JDGStore: {},
     JDPet: {},
+    JDDrug: {},
     JDFSale: {},
     JDBook: {},
     JDShand: {},
