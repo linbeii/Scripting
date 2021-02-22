@@ -1,3 +1,5 @@
+hostname = *.xxjjappss.com,www.zhihu.com,api.zhihu.com, *.googlevideo.com，*.csdn.net, m.baidu.com, www.jianshu.com, *.tiktokv.com,*.byteoversea.com,*.tik-tokapi.com, api.rr.tv, testflight.apple.com,musicpay.kuwo.cn, vip1.kuwo.cn, sf?-ttcdn-tos.pstatp.com, www.51devapp.com, *.snssdk.com, api-access.pangolin-sdk-toutiao.com, os8.pw,
+
 #知乎
 # 知乎处理用户信息
 ^https?:\/\/api\.zhihu\.com\/people\/ url script-response-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_plus.js
