@@ -82,7 +82,7 @@ https?:\/\/.*\.xmind\..*\/_res\/devices url script-response-body https://raw.git
 ^https?:\/\/api\.(polaxiong\.com|polarr\.co)\/v\d\/payments\/appleiap\/receipts\/confirmation$ url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/polaris.js
 
 # 拍照取字 Unlocks （by LTribe）
-^http?:\/\/pay_free\.maoqilai\.com\/get_user_info url response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/pzqz.js
+^http?:\/\/pay_free\.maoqilai\.com\/get_user_info url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/pzqz.js
 
 # 轻言相机解锁年订阅 （by LTribe）
 ^https?:\/\/commerce-api\.faceu\.mobi\/commerce\/.*\/subscription\/user_info* url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/qingyanxiangji.js
@@ -97,7 +97,7 @@ https?:\/\/.*\.xmind\..*\/_res\/devices url script-response-body https://raw.git
 ^http?:\/\/www\.tan8\.com\/codeindex\.php\?d\=(common\&c*|tan8\&c\=yuepu\&m*|tan8\&c\=myself\&m*) url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/tanqinba.js
 
 # 解锁网易蜗牛读书VIP
-^https://p\.du\.163\.com/readtime/info.json url reject
+^https:\/\/p\.du\.163\.com\/readtime\/info\.json url reject
 ^https:\/\/p\.du\.163\.com\/gain\/readtime\/info\.json url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/wywnds.js
 
 # Xunjie Unlock annual subscriptions （by LTribe）
