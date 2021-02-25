@@ -1,0 +1,112 @@
+hostname = api.revenuecat.com,license.pdfexpert.com,rdp.duetdisplay.com,api.flexibits.com,buy.itunes.apple.com,hostname = *.kuwo.cn,*.nebo.app, *.polarisoffice.com,prod.api.shapr3d.com,*.videostarapp.com,account.wps.cn, *.arten.cn,*.xmind.*,baimiao.uzero.cn,sapi.beingfine.cn,*.adobe.*,api.polaxiong.com, api.polarr.co,  *.maoqilai.com, commerce-api.faceu.mobi,*.platforms.team,api.591master.com,*.tan8.com,p.du.163.com, *.xunjie*.com,*.zymk.cn
+
+# 1Blocker Unlock （by LTribe）
+^https:\/\/api\.revenuecat\.com\/v1\/subscribers* url script-response-body 1Blocker.js
+
+# Audiomack 去广告（by LTribe）
+^https?:\/\/api\.revenuecat\.com\/v\d\/subscribers\/\w+$ url script-response-body Audiomack.js
+
+# Darkroom Unlock annual subscriptions （by LTribe）
+^https?:\/\/api\.revenuecat\.com\/v\d\/(receipts|subscribers*) url script-response-body Darkroom.js
+
+# Documents 解锁内购年订阅
+https:\/\/license\.pdfexpert\.com\/api\/1.0\/documents\/subscription\/(check|refresh) url script-response-body Documents.js
+
+# Duet Display Unlock Pro （by LTribe）
+^https?:\/\/rdp\.duetdisplay\.com\/v\d\/users\/validateReceipt url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/DuetPro.js
+
+# Fantastical Unlock Pro （by LTribe）
+^https?:\/\/api\.flexibits\.com\/v1\/account\/details/ url script-response-body Fantastical.js
+
+# Gear Unlock Pro （by LTribe）
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body Gear.js
+
+# Geist Unlock Pro （by LTribe）
+^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body Geist.js
+
+# 酷我音乐解锁SVIP
+# 对下载失败的音乐：先听该音乐-音乐缓存完毕之后点下载，这时下载里会显示下载失败，重启酷我，便会显示下载完成~
+^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?uid\=\d+ url 302 http://musicpay.kuwo.cn/music.pay?uid=2
+^https?:\/\/vip1\.kuwo\.cn\/(vip\/v\d\/user\/vip|vip\/spi/mservice) url script-response-body Kuwo.js
+
+# Myscript Nebo Unlocks （by LTribe）
+^https?:\/\/.*\.nebo\.app\/api\/.*\/inapppurchase\/apple\/receipt url script-response-body Nebo.js
+
+# Fantastical Unlock Pro （by LTribe）
+^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers*|receipts) url script-response-body Noto_biji.js
+
+
+# PDF Expert 7 解锁内购年订阅
+https:\/\/license\.pdfexpert\.com\/api\/1.0\/pdfexpert6\/subscription\/(check|refresh) url script-response-body PDFExpert.js
+
+# Picsew Unlocks （by LTribe）
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body Picsew.js
+
+# PolarisOffice Unlock annual subscriptions （by LTribe）
+^https?:\/\/api\.polarisoffice\.com\/api\/.*\/account\/userinfo url script-response-body PolarisOffice.js
+
+# Scanner Pro 的 Pro 订阅 （by LTribe）
+^https?:\/\/license\.pdfexpert\.com\/api\/2\.0\/scanner\/subscription\/refresh url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/ScannerPro.js
+
+# unlock Shapr3D(By LTribe)
+^https?:\/\/prod\.api\.shapr3d\.com\/user-management\/profile-with-device url script-response-body Shapr3D.js
+
+# VideoStar Unlock annual subscriptions （by LTribe）
+^https?:\/\/.*\.videostarapp\.com\/scripts\/subsNew\.php url script-response-body VideoStar.js
+
+# WPS Office
+^https?:\/\/account\.wps\.cn\/api\/users\/.*\/overview url script-response-body WPS.js
+
+[rewrite_local]
+# 解锁万里影视VIP无限时长 （by LTribe）
+^http?:\/\/.*\.arten.cn\/login\/login url script-response-body Wanliyingshi.js
+
+# Xmind Unlock annual subscriptions （by LTribe）
+https?:\/\/.*\.xmind\..*\/_res\/devices url script-response-body XMind.js
+
+[rewrite_local]
+# 白描解锁黄金会员 （by LTribe）
+^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ url script-response-body baimiao.js
+
+# 不背单词 （by LTribe）
+^https?:\/\/sapi\.beingfine\.cn\/v\d\/report\/launch* url script-response-body https://raw.githubusercontent.com/LTribeSkyx/Script/master/bubeidanci.js
+
+# inshot （by LTribe）恢复购买后请禁用.
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-request-body inshot.js
+
+# 朗易思听
+^https?:\/\/sapi\.beingfine\.cn\/v\d\/LE_GetCourseEpisodes* url response-body locked":\d response-body locked":0
+^https?:\/\/sapi\.beingfine\.cn\/v\d\/UserLaunchAppReport* url script-response-body lyst.js
+
+# Photoshop for iPad & Ps Express 解锁内购订阅【By LTribe】
+^https:\/\/.*\.adobe\..*\/mobile_profile\/nul\/v\d$ url script-response-body photoshop.js
+
+# 泼辣修图解锁会员 （by LTribe）
+^https?:\/\/api\.(polaxiong\.com|polarr\.co)\/v\d\/payments\/appleiap\/receipts\/confirmation$ url script-response-body polaris.js
+
+# 拍照取字 Unlocks （by LTribe）
+^http?:\/\/pay_free\.maoqilai\.com\/get_user_info url response-body pzqz.js
+
+# 轻言相机解锁年订阅 （by LTribe）
+^https?:\/\/commerce-api\.faceu\.mobi\/commerce\/.*\/subscription\/user_info* url script-response-body qingyanxiangji.js
+
+[rewrite_local]
+# 实时天气 Unlock Vip （by LTribe）
+^https?:\/\/subs\.platforms\.team\/.*\/(offer/checkEligibility$|verifyTransaction$) url script-response-body shishitianqi.js
+
+# 手机硬件管家终身会员（恢复购买后可禁用该重写,by LTribe）
+^http?:\/\/api\.591master\.com\:\d+\/.*\/uicommon\/getuser url script-response-body sjyjgj.js
+
+# 弹琴吧解锁付费课程（注：钢琴，电子琴，小提琴会员谱库未能解锁） （by LTribe）
+^http?:\/\/www\.tan8\.com\/codeindex\.php\?d\=(common\&c*|tan8\&c\=yuepu\&m*|tan8\&c\=myself\&m*) url script-response-body tanqinba.js
+
+# 解锁网易蜗牛读书VIP
+^https://p\.du\.163\.com/readtime/info.json url reject
+^https:\/\/p\.du\.163\.com\/gain\/readtime\/info\.json url script-response-body wywnds.js
+
+# Xunjie Unlock annual subscriptions （by LTribe）
+^https?:\/\/.*\.xunjie.*\.com\/api\/v\d\/* url script-response-body xunjie.js
+
+# 知音漫客解锁会员VIP及付费漫画 （by LTribe）
+^https?:\/\/.*\.zymk\.cn\/app_api\/v\d\/(getuserinfo|purchase_chapters_coin)\/$ url script-response-body zymk.js
+
