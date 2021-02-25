@@ -35,7 +35,6 @@ https:\/\/license\.pdfexpert\.com\/api\/1.0\/documents\/subscription\/(check|ref
 # Fantastical Unlock Pro （by LTribe）
 ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers*|receipts) url script-response-body Noto_biji.js
 
-
 # PDF Expert 7 解锁内购年订阅
 https:\/\/license\.pdfexpert\.com\/api\/1.0\/pdfexpert6\/subscription\/(check|refresh) url script-response-body PDFExpert.js
 
@@ -57,14 +56,12 @@ https:\/\/license\.pdfexpert\.com\/api\/1.0\/pdfexpert6\/subscription\/(check|re
 # WPS Office
 ^https?:\/\/account\.wps\.cn\/api\/users\/.*\/overview url script-response-body WPS.js
 
-[rewrite_local]
 # 解锁万里影视VIP无限时长 （by LTribe）
 ^http?:\/\/.*\.arten.cn\/login\/login url script-response-body Wanliyingshi.js
 
 # Xmind Unlock annual subscriptions （by LTribe）
 https?:\/\/.*\.xmind\..*\/_res\/devices url script-response-body XMind.js
 
-[rewrite_local]
 # 白描解锁黄金会员 （by LTribe）
 ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ url script-response-body baimiao.js
 
@@ -90,7 +87,6 @@ https?:\/\/.*\.xmind\..*\/_res\/devices url script-response-body XMind.js
 # 轻言相机解锁年订阅 （by LTribe）
 ^https?:\/\/commerce-api\.faceu\.mobi\/commerce\/.*\/subscription\/user_info* url script-response-body qingyanxiangji.js
 
-[rewrite_local]
 # 实时天气 Unlock Vip （by LTribe）
 ^https?:\/\/subs\.platforms\.team\/.*\/(offer/checkEligibility$|verifyTransaction$) url script-response-body shishitianqi.js
 
