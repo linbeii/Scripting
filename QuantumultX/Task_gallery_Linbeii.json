@@ -18,5 +18,10 @@
          "10 * * * * https://raw.githubusercontent.com/age174/-/main/sz.js, tag=闪挣, img-url=https://ae01.alicdn.com/kf/U0eeed99dbe9a4cf99b73aaed7902a3a9z.jpg, enabled=true",
          "15 10 * * * https://raw.githubusercontent.com/age174/-/main/mhdsp.js, tag=陌嗨短视频, img-url=https://raw.githubusercontent.com/usrnb/options/main/QuantumultX/icons/task/mhdsp.png, enabled=true",
          "15 12,14,16,20 * * * https://raw.githubusercontent.com/age174/-/main/fqkk.js, tag=番茄看看, img-url=https://ftp.bmp.ovh/imgs/2021/02/f8306006536eb49c.jpeg, enabled=true",
+	 "5,35 8-23 * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js, tag=抖音极速版, img-url=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/img/dyjsb.png, enabled=true",
+	 "*/5 6-23 * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js, tag=抖音火山版, img-url=https://gitee.com/ydj0602/hym/raw/img/DYHSB.PNG, enabled=true",
+	 "0 */30 * * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js, tag=火山视频极速版, img-url=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/img/huoshan.png, enabled=true",
+	 "5,35 8-23 * * * https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js, tag=今日头条极速版, img-url=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/img/jrtt.png, enabled=true",
+	 "0 */20 * * * * https://raw.githubusercontent.com/ZhiYi-N/script/master/kkd.js, tag=快看点, img-url=https://qxzy.top/rules/QuantumultX/img/kkd.png, enabled=true",
     ]
 }
