@@ -2,6 +2,7 @@
     "name": "Linbeii",
     "description": "Linbeii整理",
     "task": [
+	 "15 50 3 * * * https://raw.githubusercontent.com/linbeii/Scripting/master/QuantumultX/ZhiYi-N/ygkc.js, tag=阳光矿场, img-url=https://raw.githubusercontent.com/shoujiqiyuan/PokemonGOforQuanX/master/IconSet/Z003.png, enabled=false",
          "15 7,15 * * * https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/mmjz.js, tag=喵喵记账, img-url=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Icon/mmjz.png", 
          "15 7,15 * * * https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/cmccjs.js, tag=江苏移动, img-url=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Icon/cmcc.png",
          "15 0 * * * https://raw.githubusercontent.com/age174/-/main/jqb.js, tag=金钱豹, img-url=https://ftp.bmp.ovh/imgs/2021/02/9e6d449acb9b6889.png, enabled=false",
